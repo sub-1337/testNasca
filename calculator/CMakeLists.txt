@@ -5,11 +5,27 @@ project(calculator LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+## Далее идёт код подключения boost
+## с помощью фетча, у меня это не заработало
+## но вы можете попробовать
+
+# Включим модуль фетча
+#include(FetchContent)
+
+# Запрашиваем буст
+#FetchContent_Declare(
+#    boost
+#    GIT_REPOSITORY https://github.com/boostorg/boost.git
+#    GIT_TAG boost-1.84.0
+#)
+#FetchContent_MakeAvailable(boost)
+
+# TODO: замените на свой путь к бусту
 set(Boost_ROOT "D:\\boost_1_82_0")
 set(BOOST_INCLUDEDIR "${BOOST_ROOT}")
 set(BOOST_LIBRARYDIR "${BOOST_ROOT}/stage/lib")
 
-find_package(Boost 1.82.0 REQUIRED COMPONENTS filesystem system thread)
+find_package(Boost 1.82.0 REQUIRED COMPONENTS program_options)
 
 if(Boost_FOUND)
     message(STATUS "Boost include: ${Boost_INCLUDE_DIRS}")
@@ -22,4 +38,4 @@ add_executable(calculator main.cpp)
 
 
 target_include_directories(calculator PRIVATE ${Boost_INCLUDE_DIRS})
-target_link_libraries(calculator PRIVATE Boost::filesystem Boost::system Boost::thread)
+target_link_libraries(calculator PRIVATE Boost::program_options)
