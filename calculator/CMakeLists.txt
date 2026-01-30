@@ -10,7 +10,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 ## но вы можете попробовать
 
 # Включим модуль фетча
-#include(FetchContent)
+include(FetchContent)
 
 # Запрашиваем буст
 #FetchContent_Declare(
@@ -19,6 +19,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #    GIT_TAG boost-1.84.0
 #)
 #FetchContent_MakeAvailable(boost)
+
+# Запрашиваем toml++
+FetchContent_Declare(
+    tomlplusplus
+    GIT_REPOSITORY https://github.com/marzer/tomlplusplus.git
+    GIT_TAG v3.4.0
+)
+FetchContent_MakeAvailable(tomlplusplus)
 
 # TODO: замените на свой путь к бусту
 set(Boost_ROOT "D:\\boost_1_82_0")
@@ -38,4 +46,4 @@ add_executable(calculator main.cpp)
 
 
 target_include_directories(calculator PRIVATE ${Boost_INCLUDE_DIRS})
-target_link_libraries(calculator PRIVATE Boost::program_options)
+target_link_libraries(calculator PRIVATE Boost::program_options tomlplusplus::tomlplusplus)
