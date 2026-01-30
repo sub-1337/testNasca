@@ -1,8 +1,20 @@
 #include <boost/program_options.hpp>
 #include <iostream>
 #include <toml++/toml.h>
+#include <memory>
+
+class Application
+{
+private:
+    std::string configPath;
+public:
+    Application(const std::string& configPath) : configPath(configPath) {}
+    void Run() {  }
+};
 
 int main(int argc, char *argv[]) {
+    std::unique_ptr<Application> app;
+
     namespace po = boost::program_options;
 
     std::string configPath;
@@ -21,8 +33,10 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
     po::notify(vm);
-    if (vm.count("config")) {
-        std::cout << "Config: " << configPath << "\n";
+    if (vm.count("config") > 0 or vm.count("cfg") > 0 ) {
+        app = std::make_unique<Application>(configPath);
     }
+    if (app)
+        app->Run();
     return 0;
 }
