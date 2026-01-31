@@ -6,6 +6,7 @@
 #include <spdlog/spdlog.h>
 
 int main(int argc, char *argv[]) {
+    spdlog::set_level(spdlog::level::debug);
     spdlog::info("Program run");
     std::unique_ptr<application> app;
 

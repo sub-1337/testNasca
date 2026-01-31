@@ -4,8 +4,8 @@
 
     # Путь к директории для выходных CSV-файлов
     # Если не указан, создается директория 'output' рядом с приложением
-    output = 'D:\git\testNasca\calculator\output_dir'
+    #output = 'D:\git\testNasca\calculator\output_dir'
 
     # Список масок имен файлов для фильтрации
     # Если список пустой, читаются все CSV-файлы из директории
-    filename_mask = ['level', 'trade']
+    #filename_mask = ['trade']
