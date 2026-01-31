@@ -16,6 +16,18 @@ public:
     {
         read_file();
     };
+    std::string get_input() const
+    {
+        return _input;
+    }
+    std::string get_output() const
+    {
+        return _output;
+    }
+    std::vector<std::string> get_filename_mask() const
+    {
+        return _filename_mask;
+    }
 };
 
 #endif // APPLICATION_CONFIG_H

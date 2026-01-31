@@ -1,0 +1,4 @@
+[main]
+    input = '/home/user/input'
+    output = '/home/user/output'
+    filename_mask = ['trade', 'level']
