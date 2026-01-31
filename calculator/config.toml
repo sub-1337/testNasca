@@ -1,12 +1,11 @@
 [main]
+# Путь к директории с входными CSV-файлами
+    input = 'D:\git\testNasca\calculator\input_dir'
 
-    # Путь к директории с входными CSV-файлами
-    input = 'D:\git\testNasca\calculator\input_dir'
+    # Путь к директории для выходных CSV-файлов
+    # Если не указан, создается директория 'output' рядом с приложением
+    output = 'D:\git\testNasca\calculator\output_dir'
 
-    # Путь к директории для выходных CSV-файлов
-    # Если не указан, создается директория 'output' рядом с приложением
-    output = 'D:\git\testNasca\calculator\output_dir'
-
-    # Список масок имен файлов для фильтрации
-    # Если список пустой, читаются все CSV-файлы из директории
-    filename_mask = ['level', 'trade']
+    # Список масок имен файлов для фильтрации
+    # Если список пустой, читаются все CSV-файлы из директории
+    filename_mask = ['level', 'trade']

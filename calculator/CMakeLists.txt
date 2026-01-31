@@ -28,6 +28,15 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(tomlplusplus)
 
+# Запрашиваем spdlog
+FetchContent_Declare(
+    spdlog
+    GIT_REPOSITORY https://github.com/gabime/spdlog.git
+    GIT_TAG v1.17.0 # Use a specific version tag for stability
+)
+FetchContent_MakeAvailable(spdlog)
+
+
 # TODO: замените на свой путь к бусту
 set(Boost_ROOT "D:\\boost_1_82_0")
 set(BOOST_INCLUDEDIR "${BOOST_ROOT}")
@@ -49,4 +58,4 @@ add_executable(calculator main.cpp
 
 
 target_include_directories(calculator PRIVATE ${Boost_INCLUDE_DIRS})
-target_link_libraries(calculator PRIVATE Boost::program_options tomlplusplus::tomlplusplus)
+target_link_libraries(calculator PRIVATE Boost::program_options tomlplusplus::tomlplusplus spdlog::spdlog)

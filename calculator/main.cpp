@@ -1,11 +1,12 @@
 #include <boost/program_options.hpp>
 #include <iostream>
-#include <toml++/toml.h>
 #include <memory>
 #include "application.h"
 
+#include <spdlog/spdlog.h>
 
 int main(int argc, char *argv[]) {
+    spdlog::info("Program run");
     std::unique_ptr<application> app;
 
     // Parse command lines
@@ -18,17 +19,18 @@ int main(int argc, char *argv[]) {
     try {
         po::store(po::parse_command_line(argc, argv, desc), vm);
     }
-    catch(po::unknown_option& ex)
+    catch(const po::unknown_option& ex)
     {
-        std::cout << "Bad options" << "\n";
+        spdlog::error("Unknown parameters");
+        exit(1);
+    }
+    catch(...)
+    {
+        spdlog::error("Generic error while parsing parameters");
         exit(1);
     }
 
-    // Set default config path
     po::notify(vm);
-    // if (!(vm.count("config") > 0 or vm.count("cfg") > 0)) {
-    //     config_path = "config.toml";
-    // }
 
     // Runs application
     app = std::make_unique<application>(config_path);
