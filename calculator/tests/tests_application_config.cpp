@@ -42,3 +42,5 @@ TEST_CASE("Test app config 4", "[core]")
     REQUIRE(config.get_filename_mask()[0] == "trade");
     REQUIRE(config.get_filename_mask()[1] == "level");
 }
+
+
