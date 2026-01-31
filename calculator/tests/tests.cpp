@@ -1,6 +1,7 @@
 #include "../application_config.h"
 #include <catch2/catch_test_macros.hpp>
 #include <filesystem>
+
 TEST_CASE("Test app config", "[core]")
 {
     application_config config("config_1.toml");
@@ -15,6 +16,8 @@ TEST_CASE("Test app config 2", "[core]")
     REQUIRE(config.get_input() == "input_dir" );
     REQUIRE(config.get_output() == "output" );
     REQUIRE(config.get_filename_mask().size() == 0);
+    namespace fs = std::filesystem;
+    REQUIRE((fs::exists("output") && fs::is_directory("output")) == true);
 }
 
 TEST_CASE("Test app config 3", "[core]")
