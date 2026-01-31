@@ -36,6 +36,14 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(spdlog)
 
+# Require test framework
+include(FetchContent)
+FetchContent_Declare(
+  Catch2
+  GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+  GIT_TAG v3.12.0 # Use a specific version tag
+)
+FetchContent_MakeAvailable(Catch2)
 
 # TODO: замените на свой путь к бусту
 set(Boost_ROOT "D:\\boost_1_82_0")
@@ -59,3 +67,6 @@ add_executable(calculator main.cpp
 
 target_include_directories(calculator PRIVATE ${Boost_INCLUDE_DIRS})
 target_link_libraries(calculator PRIVATE Boost::program_options tomlplusplus::tomlplusplus spdlog::spdlog)
+
+enable_testing()
+add_subdirectory(tests)
