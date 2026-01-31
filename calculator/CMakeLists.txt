@@ -42,7 +42,9 @@ else()
     message(FATAL_ERROR "Boost not found")
 endif()
 
-add_executable(calculator main.cpp)
+add_executable(calculator main.cpp
+    application.cpp
+    application.h)
 
 
 target_include_directories(calculator PRIVATE ${Boost_INCLUDE_DIRS})

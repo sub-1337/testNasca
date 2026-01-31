@@ -2,27 +2,18 @@
 #include <iostream>
 #include <toml++/toml.h>
 #include <memory>
+#include "application.h"
 
-class Application
-{
-private:
-    std::string configPath;
-public:
-    Application(const std::string& configPath) : configPath(configPath) {}
-    void Run() {  }
-};
 
 int main(int argc, char *argv[]) {
     std::unique_ptr<Application> app;
 
+    // Parse command lines
     namespace po = boost::program_options;
-
-    std::string configPath;
-
+    std::string config_path;
     po::options_description desc("Options of the calculator");
     desc.add_options()
-    ("config,cfg", po::value<std::string>(&configPath), "config file path");
-
+    ("config,cfg", po::value<std::string>(&config_path), "config file path");
     po::variables_map vm;
     try {
         po::store(po::parse_command_line(argc, argv, desc), vm);
@@ -32,11 +23,17 @@ int main(int argc, char *argv[]) {
         std::cout << "Bad options" << "\n";
         exit(1);
     }
+
+    // Set default config path
     po::notify(vm);
-    if (vm.count("config") > 0 or vm.count("cfg") > 0 ) {
-        app = std::make_unique<Application>(configPath);
+    if (!(vm.count("config") > 0 or vm.count("cfg") > 0)) {
+        config_path = "config.toml";
     }
+
+    // Runs application
+    app = std::make_unique<Application>(config_path);
     if (app)
-        app->Run();
+        app->run();
+
     return 0;
 }
