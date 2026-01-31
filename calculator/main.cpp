@@ -6,7 +6,7 @@
 
 
 int main(int argc, char *argv[]) {
-    std::unique_ptr<Application> app;
+    std::unique_ptr<application> app;
 
     // Parse command lines
     namespace po = boost::program_options;
@@ -26,12 +26,12 @@ int main(int argc, char *argv[]) {
 
     // Set default config path
     po::notify(vm);
-    if (!(vm.count("config") > 0 or vm.count("cfg") > 0)) {
-        config_path = "config.toml";
-    }
+    // if (!(vm.count("config") > 0 or vm.count("cfg") > 0)) {
+    //     config_path = "config.toml";
+    // }
 
     // Runs application
-    app = std::make_unique<Application>(config_path);
+    app = std::make_unique<application>(config_path);
     if (app)
         app->run();
 

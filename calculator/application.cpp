@@ -1,12 +1,12 @@
 #include "application.h"
 #include <toml++/toml.hpp>
 
-void Application::parse()
+void application::parse()
 {
 
 }
 
-void Application::run()
+void application::run()
 {
     parse();
 }

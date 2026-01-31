@@ -1,12 +1,16 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 #include <string>
-class Application
+#include "application_config.h"
+
+class application
 {
 private:
-    std::string _configPath;
+    //std::string _configPath;
+    application_config _app_config;
+
 public:
-    Application(const std::string& configPath) : _configPath(configPath) {}
+    application(const std::string& configPath) : _app_config(configPath) {}
     void parse();
     void run();
 };

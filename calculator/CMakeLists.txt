@@ -44,7 +44,8 @@ endif()
 
 add_executable(calculator main.cpp
     application.cpp
-    application.h)
+    application.h
+    application_config.h application_config.cpp)
 
 
 target_include_directories(calculator PRIVATE ${Boost_INCLUDE_DIRS})
