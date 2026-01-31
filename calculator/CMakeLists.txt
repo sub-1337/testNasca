@@ -59,14 +59,20 @@ else()
     message(FATAL_ERROR "Boost not found")
 endif()
 
-add_executable(calculator main.cpp
+add_library(calculator_lib STATIC
     application.cpp
     application.h
     application_config.h application_config.cpp)
 
+target_include_directories(calculator_lib
+    PUBLIC ${Boost_INCLUDE_DIRS}
+)
 
-target_include_directories(calculator PRIVATE ${Boost_INCLUDE_DIRS})
-target_link_libraries(calculator PRIVATE Boost::program_options tomlplusplus::tomlplusplus spdlog::spdlog)
+target_link_libraries(calculator_lib PRIVATE Boost::program_options tomlplusplus::tomlplusplus spdlog::spdlog)
+
+add_executable(calculator main.cpp)
+
+target_link_libraries(calculator PRIVATE calculator_lib spdlog::spdlog)
 
 enable_testing()
 add_subdirectory(tests)
