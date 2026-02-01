@@ -1,2 +1,3 @@
 [main]
     input = 'input'
+    filename_mask = ['test_2']

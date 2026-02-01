@@ -18,6 +18,7 @@ void application::read_files()
         if (_app_input)
         {
             _app_input->read();
+            _app_data = _app_input->get_data();
         }
     }
     catch(...)
@@ -29,7 +30,22 @@ void application::read_files()
 
 void application::calc()
 {
-
+    try
+    {
+        if (!_app_calc_core)
+        {
+            _app_calc_core = std::make_unique<application_calc_core>();
+        }
+        if (_app_calc_core)
+        {
+            _app_calc_core->calc(_app_data);
+        }
+    }
+    catch(...)
+    {
+        spdlog::error("Error while calculating\n");
+        exit(1);
+    }
 }
 
 void application::write()

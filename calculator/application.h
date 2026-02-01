@@ -13,6 +13,7 @@ class application
 private:
     std::unique_ptr<application_config> _app_config;
     std::unique_ptr<application_input> _app_input;
+    std::shared_ptr<application_data> _app_data;
     std::unique_ptr<application_output> _app_output;
     std::unique_ptr<application_calc_core> _app_calc_core;
 protected:
