@@ -15,8 +15,20 @@ void application::read_files()
 
 }
 
+void application::calc()
+{
+
+}
+
+void application::write()
+{
+
+}
+
 void application::run()
 {
     parse_config();
     read_files();
+    calc();
+    write();
 }
