@@ -64,7 +64,9 @@ add_library(calculator_lib STATIC
     application.h
     application_config.h application_config.cpp
     application_input.h application_input.cpp
-    application_calc_core.h application_calc_core.cpp)
+    application_calc_core.h application_calc_core.cpp
+    application_data.h application_data.cpp
+    application_output.h application_output.cpp)
 
 target_include_directories(calculator_lib
     PUBLIC ${Boost_INCLUDE_DIRS}

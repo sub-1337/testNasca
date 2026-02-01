@@ -3,6 +3,8 @@ add_executable(calculator_tests
     tests_application.cpp
     tests_application_input.cpp
     tests_application_calc_core.cpp
+    tests_application_data.cpp
+    tests_application_output.cpp
 )
 
 target_link_libraries(calculator_tests PRIVATE
