@@ -6,6 +6,7 @@
 #include "application_output.h"
 #include "application_calc_core.h"
 #include <memory>
+#include <spdlog/spdlog.h>
 
 class application
 {
