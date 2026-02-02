@@ -5,7 +5,7 @@
 #include <spdlog/spdlog.h>
 
 int main(int argc, char *argv[]) {
-    spdlog::set_level(spdlog::level::debug);
+    spdlog::set_level(spdlog::level::warn);
     spdlog::info("Program run");
     std::unique_ptr<application> app;
 
@@ -21,21 +21,28 @@ int main(int argc, char *argv[]) {
     }
     catch(const po::unknown_option& ex)
     {
-        spdlog::error("Unknown parameters");
+        spdlog::error("Unknown parameters.");
         exit(1);
     }
     catch(...)
     {
-        spdlog::error("Generic error while parsing parameters");
+        spdlog::error("Generic error while parsing parameters. Exiting.");
         exit(1);
     }
 
     po::notify(vm);
 
     // Runs application
-    app = std::make_unique<application>(config_path);
-    if (app)
-        app->run();
+    try {
+        app = std::make_unique<application>(config_path);
+        if (app)
+            app->run();
+    }
+    catch(...)
+    {
+        spdlog::error("Some generic error while running. Exiting.");
+        exit(1);
+    }
 
     return 0;
 }

@@ -20,10 +20,10 @@ void application_config::read_file()
             _output = "output";
             namespace fs = std::filesystem;
             if (fs::create_directories(_output)) {
-                spdlog::info("No output folder set. Default folder \"{}\" created", _output);
+                spdlog::debug("No output folder set. Default folder \"{}\" created", _output);
             } else {
                 if (fs::exists(_output) && fs::is_directory(_output)) {
-                    spdlog::info("No output folder set. Default folder \"{}\" exist, using it", _output);
+                    spdlog::debug("No output folder set. Default folder \"{}\" exist, using it", _output);
                 } else {
                     spdlog::error("No output folder set. Default folder \"{}\" can't be created", _output);
                     exit(1);
@@ -50,7 +50,7 @@ void application_config::read_file()
         }
         else
         {
-            spdlog::info("No file masks in config");
+            spdlog::debug("No file masks in config");
         }
     }
     catch(...)

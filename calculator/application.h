@@ -17,7 +17,6 @@ private:
     std::unique_ptr<application_output> _app_output;
     std::unique_ptr<application_calc_core> _app_calc_core;
 protected:
-    void parse_config();
     void read_files();
     void calc();
     void write();

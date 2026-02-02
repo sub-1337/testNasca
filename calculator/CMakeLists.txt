@@ -5,12 +5,12 @@ project(calculator LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Включим модуль фетча
+include(FetchContent)
+
 ## Далее идёт код подключения boost
 ## с помощью фетча, у меня это не заработало
 ## но вы можете попробовать
-
-# Включим модуль фетча
-include(FetchContent)
 
 # Запрашиваем буст
 #FetchContent_Declare(

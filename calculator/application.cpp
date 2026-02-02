@@ -2,11 +2,6 @@
 #include <toml++/toml.hpp>
 #include <spdlog/spdlog.h>
 
-void application::parse_config()
-{
-
-}
-
 void application::read_files()
 {
     try
@@ -43,26 +38,33 @@ void application::calc()
     }
     catch(...)
     {
-        spdlog::error("Error while calculating\n");
+        spdlog::error("Error while calculating.\n");
         exit(1);
     }
 }
 
 void application::write()
 {
-    if(!_app_output)
+    try
     {
-        _app_output = std::make_unique<application_output>(_app_data, _app_config->get_output());
+        if(!_app_output)
+        {
+            _app_output = std::make_unique<application_output>(_app_data, _app_config->get_output());
+        }
+        if (_app_output)
+        {
+            _app_output->write();
+        }
     }
-    if (_app_output)
+    catch(...)
     {
-        _app_output->write();
+        spdlog::error("Error while writing file.\n");
+        exit(1);
     }
 }
 
 void application::run()
 {
-    parse_config();
     read_files();
     calc();
     write();
