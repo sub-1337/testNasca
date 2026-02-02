@@ -34,11 +34,11 @@ void application::calc()
     {
         if (!_app_calc_core)
         {
-            _app_calc_core = std::make_unique<application_calc_core>();
+            _app_calc_core = std::make_unique<application_calc_core>(_app_data);
         }
         if (_app_calc_core)
         {
-            _app_calc_core->calc(_app_data);
+            _app_calc_core->calc();
         }
     }
     catch(...)
@@ -50,7 +50,14 @@ void application::calc()
 
 void application::write()
 {
-
+    if(!_app_output)
+    {
+        _app_output = std::make_unique<application_output>(_app_data, _app_config->get_output());
+    }
+    if (_app_output)
+    {
+        _app_output->write();
+    }
 }
 
 void application::run()

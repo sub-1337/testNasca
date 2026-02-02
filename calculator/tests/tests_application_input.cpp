@@ -6,7 +6,7 @@
 
 TEST_CASE("Test input app", "[core]")
 {
-    spdlog::set_level(spdlog::level::debug);
+    //spdlog::set_level(spdlog::level::debug);
     application_input input("input", {"test_1"});
     input.read();
     std::shared_ptr<application_data> data = input.get_data();

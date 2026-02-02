@@ -23,8 +23,8 @@ TEST_CASE("Test app config 2", "[core]")
 TEST_CASE("Test app config 3", "[core]")
 {
     namespace fs = std::filesystem;
-    if (fs::exists("output"))
-        fs::remove("output");
+    //if (fs::exists("output"))
+    //    fs::remove("output");
     application_config config("config_3.toml");
     REQUIRE(config.get_input() == "input_dir" );
     REQUIRE(config.get_output() == "output" );

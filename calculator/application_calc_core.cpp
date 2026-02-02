@@ -10,7 +10,7 @@ bool areEqual(double a, double b, double epsilon = 1e-9) {
     return std::abs(a - b) < epsilon;
 }
 
-void application_calc_core::calc(std::shared_ptr<application_data> data)
+void application_calc_core::calc()
 {
     using namespace boost::accumulators;
 // Не совсем понимаю писать так или по-дргуому
@@ -36,7 +36,7 @@ void application_calc_core::calc(std::shared_ptr<application_data> data)
     long count_of_elems = 0;
     long count_of_elems_needs_to_skip = 5;
     double prev_median_number = 0;
-    for (auto& curr_row : data->data_in)
+    for (auto& curr_row : _data->data_in)
     {
         double price = curr_row.price;
         long receive_ts = curr_row.receive_ts;
@@ -56,7 +56,7 @@ void application_calc_core::calc(std::shared_ptr<application_data> data)
             // If not equal - add to output
             if (!areEqual(median_number, prev_median_number))
             {
-                data->data_out.push_back(application_output_record({.receive_ts = receive_ts, .price_median = median_number}));
+                _data->data_out.push_back(application_output_record({.receive_ts = receive_ts, .price_median = median_number}));
                 // Save new last value
                 prev_median_number = median_number;
             }

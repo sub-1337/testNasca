@@ -4,6 +4,6 @@
 
 TEST_CASE("Test output app", "[core]")
 {
-    application_output out;
+    //application_output out;
     //REQUIRE();
 }

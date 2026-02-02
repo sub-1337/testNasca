@@ -6,5 +6,4 @@ TEST_CASE("Test app", "[core]")
 {
     application app("config_5_only_input.toml");
     app.run();
-    //REQUIRE();
 }

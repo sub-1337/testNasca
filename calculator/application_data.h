@@ -3,11 +3,11 @@
 #include <vector>
 #include <algorithm>
 
-    struct application_input_record
-    {
-        long receive_ts;
-        double price;
-    };
+struct application_input_record
+{
+    long receive_ts;
+    double price;
+};
 
 struct application_output_record
 {

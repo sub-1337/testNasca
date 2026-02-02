@@ -30,3 +30,4 @@ configure_file(files/config_5_only_input.toml ${CMAKE_CURRENT_BINARY_DIR}/config
 
 file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/input")
 configure_file(files/input/test_1.csv ${CMAKE_CURRENT_BINARY_DIR}/input/test_1.csv COPYONLY)
+configure_file(files/input/test_2.csv ${CMAKE_CURRENT_BINARY_DIR}/input/test_2.csv COPYONLY)
